@@ -1,0 +1,36 @@
+{% extends 'AttendanceBundle:Default:base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12 main">
+          <h1 class="page-header">Novo Chamado</h1>
+          
+          <div id="form">
+            <form class="form-signin" id="addticket" method="POST" action="{{path('attendance_ticket_add')}}">
+                <fieldset>
+                    <label for="name" class="sr-only">Nome</label>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Seu Nome" required="" autofocus="">
+                </fieldset>
+                <fieldset>
+                    <label for="email" class="sr-only">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Endereço de E-mail" required="" autofocus="">
+                </fieldset>
+                <fieldset>
+                    <label for="order_id" class="sr-only">Nº Pedido</label>
+                    <input type="text" name="order_id" id="order_id" class="form-control" placeholder="Número do Pedido" required="" autofocus="">
+                </fieldset>
+                <fieldset>
+                    <label for="title" class="sr-only">Título</label>
+                    <input type="text" name="title" id="title" class="form-control" placeholder="Título do chamado" required="" autofocus="">
+                </fieldset>
+                <fieldset>
+                    <label for="observation" class="sr-only">Observação</label>
+                    <textarea name="observation" id="observation" class="form-control" placeholder="Descreva seu chamado" required="" autofocus=""></textarea>
+                </fieldset>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Criar Chamado</button>
+            </form>
+          </div>
+          
+        </div>
+</div>
+{% endblock %}

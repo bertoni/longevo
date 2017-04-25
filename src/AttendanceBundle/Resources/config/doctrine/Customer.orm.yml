@@ -1,0 +1,24 @@
+# src/AttendanceBundle/Resources/config/doctrine/Customer.orm.yml
+AttendanceBundle\Entity\Customer:
+    type: entity
+    table: tb_customer
+    id:
+        id:
+            type: integer
+            length: 3
+            generator: { strategy: AUTO }
+            options:
+                unsigned: true
+    fields:
+        name:
+            type: text
+            length: 255
+            nullable: false
+        email:
+            type: text
+            length: 255
+            nullable: false
+    oneToMany:
+        tickets:
+          targetEntity: Ticket
+          mappedBy: customer

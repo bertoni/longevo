@@ -1,0 +1,14 @@
+attendance_homepage:
+    path:     /
+    defaults: { _controller: AttendanceBundle:Default:index }
+
+
+attendance_ticket_add:
+    path:     /novo-ticket
+    defaults: { _controller: AttendanceBundle:Default:addTicket }
+    methods:  [POST]
+
+
+attendance_report:
+    path:     /relatorio
+    defaults: { _controller: AttendanceBundle:Default:list }

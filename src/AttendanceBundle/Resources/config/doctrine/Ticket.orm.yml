@@ -1,0 +1,45 @@
+# src/AttendanceBundle/Resources/config/doctrine/Ticket.orm.yml
+AttendanceBundle\Entity\Ticket:
+    type: entity
+    table: tb_ticket
+    id:
+        id:
+            type: integer
+            length: 3
+            generator: { strategy: AUTO }
+            options:
+                unsigned: true
+    fields:
+        title:
+            type: text
+            length: 50
+            nullable: false
+        observation:
+            type: text
+            nullable: false
+        customer_id:
+            type: integer
+            length: 3
+            nullable: false
+            options:
+                unsigned: true
+        order_id:
+            type: integer
+            length: 3
+            nullable: false
+            options:
+                unsigned: true
+    manyToOne:
+        customer:
+          targetEntity: Customer
+          inversedBy: tickets
+          joinColumn:
+            name: customer_id
+            referencedColumnName: id
+        order:
+          targetEntity: Order
+          inversedBy: tickets
+          joinColumn:
+            name: order_id
+            referencedColumnName: id
+    repositoryClass: AttendanceBundle\Entity\TicketRepository

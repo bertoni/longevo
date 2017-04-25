@@ -1,0 +1,3 @@
+attendance:
+    resource: "@AttendanceBundle/Resources/config/routing.yml"
+    prefix:   /

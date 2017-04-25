@@ -1,0 +1,58 @@
+{% extends 'AttendanceBundle:Default:base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12 main">
+          <h1 class="page-header">Relatório de Chamado</h1>
+          
+          <div class="table-responsive">
+            <form class="form-signin" id="form-filter" method="GET" action="{{path('attendance_report')}}">
+                <input type="hidden" name="pagina" value="1" />
+                <fieldset>
+                    <label for="email" class="sr-only">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Endereço de E-mail" value="{% if email is defined %}{{email}}{% endif %}">
+                </fieldset>
+                <fieldset>
+                    <label for="order_id" class="sr-only">Nº Pedido</label>
+                    <input type="text" name="order_id" id="order_id" class="form-control" placeholder="Número do Pedido" autofocus="{% if order_id is defined %}{{order_id}}{% endif %}">
+                </fieldset>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Filtrar</button>
+            </form>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Número</th>
+                  <th>Cliente</th>
+                  <th>E-mail</th>
+                  <th>Pedido</th>
+                  <th>Título</th>
+                  <th>Observação</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if tickets is defined and tickets is iterable and tickets|length > 0 %}
+                    {% for ticket in tickets %}
+                    <tr>
+                      <td>{{ticket.id}}</td>
+                      <td>{{ticket.customer.name}}</td>
+                      <td>{{ticket.customer.email}}</td>
+                      <td>{{ticket.order.id}}</td>
+                      <td>{{ticket.title}}</td>
+                      <td>{{ticket.observation}}</td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+              </tbody>
+            </table>
+            {% if page is defined %}
+                {% if page > 1 %}
+                    <a href="{{page-1}}" class="btn btn-primary pagination"><i class="fa fa-arrow-left"></i> Página Anterior</a>
+                {% endif %}
+                {% if tickets is defined and tickets is iterable and tickets|length > 0 %}
+                    <a href="{{page+1}}" class="btn btn-primary pagination">Próxima Página <i class="fa fa-arrow-right"></i></a>
+                {% endif %}
+            {% endif %}
+          </div>
+        </div>
+    </div>
+{% endblock %}

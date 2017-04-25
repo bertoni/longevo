@@ -1,0 +1,12 @@
+body { padding: 30px; }
+
+#form { margin-top: 20px; }
+#form form { width: 80%; }
+#form form fieldset { margin: 20px 0; }
+#form form button[type="submit"] { float: right; width: 20%; }
+
+#form-filter { margin: 15px 0; }
+#form-filter fieldset { display: inline-block; width: 30%; }
+#form-filter button { display: inline-block; width: auto; margin-left: 10px; padding-top: 4px; padding-bottom: 3px; }
+
+.pagination { padding-left: 10px; padding-right: 10px; }
